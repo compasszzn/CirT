@@ -1,0 +1,23 @@
+model_args:
+    model_name: 'gnn'
+    input_size: 63 ### pred_pressure_vars*10+single_vars
+    hidden_sizes: 20
+    output_size: 61 ### pred_pressure_vars*10+pred_single_vars
+    learning_rate: 0.01
+    num_workers: 12
+    epochs: 500
+    t_max: 500
+    pred_len: 2
+    only_headline: False
+    
+data_args:
+    batch_size: 1
+    train_years: [1979, 1980, 1981, 1982, 1983, 1984, 1985]
+    val_years: [1986,1987,1988]
+    kernel_size: 4
+    data_dir: '/data/zzn/S2S'
+    n_step: 15
+    lead_time: 28
+    single_vars: ['10m_u_component_of_wind', '10m_v_component_of_wind', '2m_dewpoint_temperature'] ##input single_vars
+    pred_single_vars: ['2m_dewpoint_temperature']
+    pred_pressure_vars: ['geopotential', 'specific_humidity', 'temperature', 'u_component_of_wind', 'v_component_of_wind', 'vertical_velocity']

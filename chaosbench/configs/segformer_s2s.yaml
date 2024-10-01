@@ -1,0 +1,23 @@
+model_args:
+    model_name: 'climax'
+    input_size: 63 ### pred_pressure_vars*10+single_vars
+    output_size: 63 ### pred_pressure_vars*10+pred_single_vars ###segformer的input_size和output_size要一致
+    learning_rate: 0.01
+    num_workers: 12
+    epochs: 20
+    t_max: 500
+    pred_len: 2
+    only_headline: False
+    
+data_args:
+    batch_size: 16
+    train_years: [1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
+    test_years: [2017]
+    val_years: [2018]
+    data_dir: '/mnt/sdc/qifan/zzn/S2S'
+    n_step: 28
+    lead_time: 15
+    single_vars: ['10m_u_component_of_wind','10m_v_component_of_wind', '2m_temperature'] ##input single_vars
+    pred_single_vars: ['10m_u_component_of_wind','10m_v_component_of_wind', '2m_temperature']
+    pred_pressure_vars: ['geopotential', 'specific_humidity', 'temperature', 'u_component_of_wind', 'v_component_of_wind', 'vertical_velocity']
+ 
