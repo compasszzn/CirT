@@ -13,12 +13,7 @@ warnings.filterwarnings("ignore")
     
 
 def main(args):
-    """
-    Main driver to compute climatology of individual param/level pair
-    Usage example: 
-        (1) Scalar climatology for training  : `python compute_climatology.py --dataset_name era5 --is_spatial 0`
-        (2) Proper DOY-spatial climatology   : `python compute_climatology.py --dataset_name era5 --is_spatial 1`
-    """
+
     if args.dataset_name=='pressure_level_1.5':
         data_dir = Path(config.DATA_DIR) / 'pressure_level_1.5'
     elif args.dataset_name=='single_level_1.5':

@@ -1,7 +1,7 @@
 model_args:
     model_name: 'CirT'
     input_size: 63 ### pred_pressure_vars*10+single_vars
-    output_size: 63 ### pred_pressure_vars*10+pred_single_vars ###segformer的input_size和output_size要一致
+    output_size: 63 ### pred_pressure_vars*10+pred_single_vars
     learning_rate: 0.01
     num_workers: 12
     epochs: 20
