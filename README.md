@@ -16,4 +16,7 @@ python data_download/training_data/step3_compute_climatology.py --dataset_name p
 python data_download/training_data/step3_compute_climatology.py --dataset_name single_level_1.5
 ```
 
-This code is adapted or borrows heavily from [ChaosBench](https://github.com/leap-stc/ChaosBench)
+# Train CirT
+```
+python train.py
+```
