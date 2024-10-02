@@ -3,7 +3,7 @@ import xarray as xr
 from pathlib import Path
 import numpy as np
 from datetime import datetime
-from chaosbench import config
+from CIRT import config
 
 def convert_time(
     timestamp, 

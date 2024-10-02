@@ -3,7 +3,7 @@ from functools import lru_cache
 import numpy as np
 import torch
 import torch.nn as nn
-from timm.models.vision_transformer import PatchEmbed, trunc_normal_, Block
+from timm.models.vision_transformer import trunc_normal_, Block
 from torch.jit import Final
 
 import torch.nn.functional as F
@@ -167,7 +167,7 @@ class Block(nn.Module):
         return x
 
 
-class SHFormer(nn.Module):
+class Model(nn.Module):
     def __init__(
         self,
         img_size=[121, 240],

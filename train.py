@@ -10,7 +10,7 @@ from lightning.pytorch import loggers as pl_loggers
 from lightning.pytorch.callbacks import ModelCheckpoint
 pl.seed_everything(42)
 
-from chaosbench.models import model
+from CIRT.models import model
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 
@@ -21,7 +21,7 @@ def main(args):
     """
     Training script given .yaml config
     Example usage:
-        1) `python train.py --config_filepath chaosbench/configs/fno_s2s.yaml`
+        1) `python train.py --config_filepath CIRT/configs/fno_s2s.yaml`
     """
     
     # Retrieve hyperparameters
@@ -32,16 +32,15 @@ def main(args):
     data_args = hyperparams['data_args']
         
     # Initialize model
-    if args.data_type=="graph":
-        baseline = model.S2SGNNModel(model_args=model_args, data_args=data_args)
-    elif args.data_type=="image":
-        baseline = model.S2SBenchmarkModel(model_args=model_args, data_args=data_args)
+
+
+    baseline = model.S2SBenchmarkModel(model_args=model_args, data_args=data_args)
 
     baseline.setup()
     
     # Initialize training
     log_dir = Path('logs') / model_args['model_name']
-    wandb_logger = WandbLogger(project="S2S_zzn")
+    wandb_logger = WandbLogger(project="S2S")
     # tb_logger = pl_loggers.TensorBoardLogger(save_dir=log_dir)
     checkpoint_callback = ModelCheckpoint(monitor='val_loss', mode='min')
 
@@ -61,12 +60,7 @@ def main(args):
     
 
 if __name__ == "__main__":
-    
-    print(torch.cuda.current_device())
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config_filepath',default='chaosbench/configs/segformer_s2s.yaml', help='Provide the filepath string to the model config...')
-    parser.add_argument('--data_type',default='image', help='Provide the filepath string to the model config...')
-    # parser.add_argument('--config_filepath',default='/home/zinanzheng/project/SST/S2S/chaosbench/configs/gnn.yaml', help='Provide the filepath string to the model config...')
-    # parser.add_argument('--data_type',default='graph', help='Provide the filepath string to the model config...')
+    parser.add_argument('--config_filepath',default='CIRT/configs/CirT.yaml', help='Provide the filepath string to the model config...')
     args = parser.parse_args()
     main(args)
