@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 import argparse
 import config
-# 基本文件路径
+
 def main(args):
 
     a = xr.open_zarr('gs://weatherbench2/datasets/era5_daily/1959-2023_01_10-full_37-1h-0p25deg-chunk-1-s2s.zarr')

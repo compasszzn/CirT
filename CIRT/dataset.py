@@ -39,12 +39,10 @@ class S2SDataset(Dataset):
         self.data_dir = [
             Path(data_dir) / 'pressure_level_1.5',
             Path(data_dir) / 'single_level_1.5',
-            # Path(config.DATA_DIR) / 'oras5'
         ]
         self.normalization_file = [
             Path(data_dir) / 'climatology_1.5' / 'climatology_pressure_level_1.5_new.zarr',
             Path(data_dir) / 'climatology_1.5' / 'climatology_single_level_1.5_new.zarr',
-            # Path(config.DATA_DIR) / 'climatology' / 'climatology_oras5.zarr'
         ]
         
         self.years = [str(year) for year in years]
@@ -149,25 +147,4 @@ class S2SDataset(Dataset):
 
 
 
-    def _create_edges(self, latitude, longitude,kernel_size):
-        print("--------creating edge--------")
-        edge = []
-        kernel_size = 2
-
-        for lat in tqdm(range(latitude)):
-            for lon in range(longitude):
-
-                min_lat = max(0, lat - kernel_size)
-                max_lat = min(latitude - 1, lat + kernel_size)
-
-                min_lon = lon - kernel_size
-                max_lon = lon + kernel_size
-
-                for la in range(min_lat, max_lat + 1):
-                    for lo in range(min_lon, max_lon + 1):
-                        if la != lat or lo != lon:
-                            edge.append((lat, lon, la, lo % longitude))
-        edge_index = [(e[0] * longitude + e[1], e[2] * longitude + e[3]) for e in edge]
-        edge_index=torch.tensor(edge_index, dtype=torch.long).t()
-        return edge_index
 
