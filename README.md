@@ -28,7 +28,13 @@ python train.py
 ## Citation
 If you find any of the code useful, feel free to cite these works.
 ```
-
+@inproceedings{
+liu2025cirt,
+title={CirT: Global Subseasonal-to-Seasonal Forecasting with Geometry-inspired Transformer},
+author={Yang Liu and Zinan Zheng and Jiashun Cheng and Fugee Tsung and Deli Zhao and Yu Rong and Jia Li},
+booktitle={The Thirteenth International Conference on Learning Representations},
+year={2025}
+}
 ```
 ## Acknowledgement
 We use the code from the repository [ChaosBench](https://github.com/leap-stc/ChaosBench)
