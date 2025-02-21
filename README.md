@@ -1,7 +1,7 @@
 # CirT: Global Subseaonal-To-Seasonal Forecasting with Geometry-inspired Transformer
 This is the official Pytorch implementation of the paper: CirT: Global Subseaonal-to-Seasonal Forecasting with Geometry-inspired Transformer in ICLR 2025.
 ## Quickstart
-1. Create environment and install dependencies
+Create environment and install dependencies
 ```
 conda create -n cirt python==3.9
 conda activate cirt
